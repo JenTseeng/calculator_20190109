@@ -61,25 +61,21 @@ def evaluate(operation, num1, num2):
 
     return answer
 
-
 while True:
+    valid_ops = ['+', '-', '*', '/', 'square', 'cube', 'pow', 'mod']
     expression = input(">")
+    # check that arguments are text with optional numbers
     try:
         operation, num1, num2 = separate_user_input(expression)
-        valid_ops = ['q', '+', '-', '*', '/', 'square', 'cube', 'pow', 'mod']
-        if operation in valid_ops:
-            if operation == 'q':
-                break
-            else:
-                answer = evaluate(operation, num1, num2)
-                print(answer)
-        else:
-            print("Not a valid operation")
     except:
         print("You fool!  You need to input valid numbers!")
 
-# while loop function
-
-#try separate user input
-
-#except 
+    # evaluate input if operation tests valid
+    if operation == 'q':
+        break
+    elif operation not in valid_ops:
+        print("Not a valid operation")
+    else:
+        answer = evaluate(operation, num1, num2)
+        print(answer)
+    
