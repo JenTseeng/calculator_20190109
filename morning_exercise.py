@@ -1,26 +1,42 @@
 """Math functions for calculator."""
 from arithmetic import *
 
+#working copy, do not mess up!!
+# def separate_user_input(s):
+#     separated = expression.split()
+#     operation = separated[0]
+
+#     if len(separated)==1:
+#         return [operation, 0, 0]
+#     elif len(separated)==2:
+#         try:
+#             num1 = int(separated[1])
+#             return [operation, num1, 0]
+#         except ValueError:
+#             return ['notNum', 0 ,0]
+#     elif len(separated)==3:
+#         try:
+#             num1 = int(separated[1])
+#             num2 = int(separated[2])
+#             return [operation, num1, num2]
+#         except ValueError:
+#             return ['notNum', 0 ,0]
+#     else:
+#         print("Invalid number of arguments.")
 
 def separate_user_input(s):
     separated = expression.split()
-    operation = expression.split()[0]
+    operation = separated[0]
 
     if len(separated)==1:
         return [operation, 0, 0]
     elif len(separated)==2:
-        try:
-            num1 = int(separated[1])
-            return [operation, num1, 0]
-        except ValueError:
-            return ['notNum', 0 ,0]
+        num1 = int(separated[1])
+        return [operation, num1, 0]
     elif len(separated)==3:
-        try:
-            num1 = int(separated[1])
-            num2 = int(separated[2])
-            return [operation, num1, num2]
-        except ValueError:
-            return ['notNum', 0 ,0]
+        num1 = int(separated[1])
+        num2 = int(separated[2])
+        return [operation, num1, num2]
     else:
         print("Invalid number of arguments.")
         
@@ -48,21 +64,22 @@ def evaluate(operation, num1, num2):
 
 while True:
     expression = input(">")
-    
-    operation, num1, num2 = separate_user_input(expression)
-    valid_ops = ['q', '+', '-', '*', '/', 'square', 'cube', 'pow', 'mod', 'notNum']
-
-    #check for valid operation
-    if operation in valid_ops:
-        if operation == 'q':
-            break
-        elif operation == 'notNum':
-            print("Must enter valid numbers")
+    try:
+        operation, num1, num2 = separate_user_input(expression)
+        valid_ops = ['q', '+', '-', '*', '/', 'square', 'cube', 'pow', 'mod']
+        if operation in valid_ops:
+            if operation == 'q':
+                break
+            else:
+                answer = evaluate(operation, num1, num2)
+                print(answer)
         else:
-            answer = evaluate(operation, num1, num2)
-            print(answer)
+            print("Not a valid operation")
+    except:
+        print("You fool!  You need to input valid numbers!")
 
-    else:
-        print ("Not a valid operation")
+# while loop function
 
+#try separate user input
 
+#except 
